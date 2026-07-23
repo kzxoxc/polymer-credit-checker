@@ -13,10 +13,5 @@ export function gradePoint(grade) {
   return scale.grades[key];
 }
 
-export function isFailing(grade) {
-  return (grade || "").trim().toUpperCase() === "F";
-}
-
 export const defaultRetakeThreshold = scale.defaultRetakeThreshold;
-export const categoryCodeLegend = scale.categoryCodeLegend;
 export const allGrades = Object.keys(scale.grades);
