@@ -1,0 +1,195 @@
+:root {
+  color-scheme: light dark;
+  --border: #d8d8d8;
+  --accent: #2f6f4f;
+  --bg-card: #fafafa;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, "Malgun Gothic", "Apple SD Gothic Neo", sans-serif;
+  color: #1a1a1a;
+  background: #fff;
+}
+
+.app {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 24px 16px 64px;
+}
+
+header h1 {
+  margin-bottom: 4px;
+}
+
+.hint {
+  color: #666;
+  font-size: 0.9em;
+}
+
+.step {
+  margin-top: 24px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin: 12px 0;
+  max-width: 320px;
+}
+
+.field.inline {
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  max-width: none;
+}
+
+select,
+input[type="text"],
+input[type="number"],
+input[type="file"] {
+  padding: 6px 8px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 1em;
+}
+
+.preview {
+  max-width: 100%;
+  max-height: 400px;
+  margin: 12px 0;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+button {
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: 1px solid var(--accent);
+  background: var(--accent);
+  color: white;
+  cursor: pointer;
+  font-size: 1em;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+button.secondary {
+  background: white;
+  color: var(--accent);
+}
+
+button.icon {
+  padding: 2px 8px;
+  border-color: #c88;
+  background: white;
+  color: #c33;
+}
+
+.table-wrap {
+  overflow-x: auto;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th,
+td {
+  border: 1px solid var(--border);
+  padding: 4px 6px;
+  font-size: 0.9em;
+}
+
+.card {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px;
+  margin: 16px 0;
+  background: var(--bg-card);
+}
+
+.card h3 {
+  margin-top: 0;
+}
+
+.course-list {
+  margin: 8px 0;
+  padding-left: 20px;
+}
+
+.ok {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.error {
+  color: #c33;
+  font-weight: 600;
+}
+
+.progress {
+  position: relative;
+  background: #eee;
+  border-radius: 6px;
+  height: 24px;
+  overflow: hidden;
+  margin: 8px 0;
+}
+
+.progress-bar {
+  background: var(--accent);
+  height: 100%;
+  transition: width 0.3s ease;
+}
+
+.progress-label {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8em;
+  color: #111;
+  mix-blend-mode: difference;
+  filter: invert(1);
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background: #14161a;
+    color: #eee;
+  }
+  .card {
+    background: #1d2024;
+    border-color: #333;
+  }
+  .hint {
+    color: #999;
+  }
+  button.secondary {
+    background: #14161a;
+  }
+  select,
+  input {
+    background: #14161a;
+    color: #eee;
+    border-color: #444;
+  }
+}

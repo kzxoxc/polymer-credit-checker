@@ -1,0 +1,346 @@
+{
+  "cohortYear": 2024,
+  "college": "공과대학",
+  "department": "고분자공학과",
+  "source": "2024학년도 교과과정표.pdf",
+  "graduationCredits": 130,
+  "majorMinCredits": 65,
+  "_notes": [
+    "graduationCredits(130)/majorMinCredits(65)는 학과 공식 졸업요건 안내(20~26학번 동일 적용)로 확정됨.",
+    "물리학실험1,2는 이후 교육과정 개편으로 더 이상 필수가 아니게 되어 계열교양 목록에서 제외함(사용자 확인). 이수했다면 일반교양으로 표시됨."
+  ],
+  "categories": {
+    "의사소통영어": {
+      "type": "choose1",
+      "credits": 3,
+      "options": [
+        {
+          "code": "GEB1107",
+          "name": "의사소통영어"
+        },
+        {
+          "code": "GEB1108",
+          "name": "의사소통영어: 중급"
+        },
+        {
+          "code": "GEB1109",
+          "name": "의사소통영어: 고급"
+        }
+      ]
+    },
+    "핵심교양": {
+      "type": "chooseEach",
+      "areas": [
+        {
+          "name": "1영역 (인간/가치/공존)",
+          "credits": 3
+        },
+        {
+          "name": "2영역 (역사/사상/문화)",
+          "credits": 3
+        },
+        {
+          "name": "4영역 (사회/제도/세계)",
+          "credits": 3
+        },
+        {
+          "name": "6영역 (수리/정보/기술)",
+          "credits": 3
+        }
+      ]
+    },
+    "창의영역": {
+      "type": "choose1",
+      "credits": 3
+    },
+    "SW·AI 일반교양7영역": {
+      "type": "choose1",
+      "credits": 3
+    },
+    "전공필수": {
+      "type": "fixed",
+      "courses": [
+        {
+          "code": "PSE2011",
+          "name": "물리화학1",
+          "credits": 3
+        },
+        {
+          "code": "PSE2021",
+          "name": "물리화학2",
+          "credits": 3
+        },
+        {
+          "code": "PSE2041",
+          "name": "유기화학1",
+          "credits": 3
+        },
+        {
+          "code": "PSE2051",
+          "name": "유기화학2",
+          "credits": 3
+        },
+        {
+          "code": "PSE3181",
+          "name": "고분자물리화학",
+          "credits": 3
+        },
+        {
+          "code": "PSE3191",
+          "name": "고분자화학",
+          "credits": 3
+        },
+        {
+          "code": "PSE3201",
+          "name": "고분자물성",
+          "credits": 3
+        },
+        {
+          "code": "PSE3211",
+          "name": "고분자실험1",
+          "credits": 2
+        },
+        {
+          "code": "PSE4181",
+          "name": "고분자실험2",
+          "credits": 2
+        },
+        {
+          "code": "PSE4171",
+          "name": "고분자종합설계",
+          "credits": 2
+        }
+      ]
+    },
+    "전공선택": {
+      "type": "creditPool",
+      "courses": [
+        {
+          "code": "PSE2060",
+          "name": "재료과학",
+          "credits": 3
+        },
+        {
+          "code": "PSE2180",
+          "name": "생명과 고분자",
+          "credits": 3
+        },
+        {
+          "code": "PSE2090",
+          "name": "생활속의 고분자",
+          "credits": 3
+        },
+        {
+          "code": "PSE3170",
+          "name": "고분자기기분석",
+          "credits": 3
+        },
+        {
+          "code": "PSE3110",
+          "name": "반응공학",
+          "credits": 3
+        },
+        {
+          "code": "PSE3120",
+          "name": "유기반응의 이해",
+          "credits": 3
+        },
+        {
+          "code": "PSE3202",
+          "name": "고분자공정 이동현상",
+          "credits": 3
+        },
+        {
+          "code": "PSE3140",
+          "name": "무기화학",
+          "credits": 3
+        },
+        {
+          "code": "PSE3230",
+          "name": "유기재료합성",
+          "credits": 3
+        },
+        {
+          "code": "PSE3220",
+          "name": "고분자유변학",
+          "credits": 3
+        },
+        {
+          "code": "PSE3250",
+          "name": "에너지전기화학",
+          "credits": 3
+        },
+        {
+          "code": "PSE3070",
+          "name": "고분자프로세싱",
+          "credits": 3
+        },
+        {
+          "code": "PSE3100",
+          "name": "나노계면화학",
+          "credits": 3
+        },
+        {
+          "code": "PSE3235",
+          "name": "고분자역학",
+          "credits": 3
+        },
+        {
+          "code": "PSE3240",
+          "name": "현대 과학기술의 진보",
+          "credits": 3
+        },
+        {
+          "code": "PSE4190",
+          "name": "고분자합성",
+          "credits": 3
+        },
+        {
+          "code": "PSE4010",
+          "name": "고분자나노복합재료",
+          "credits": 3
+        },
+        {
+          "code": "PSE4060",
+          "name": "기능성신소재",
+          "credits": 3
+        },
+        {
+          "code": "PSE4210",
+          "name": "전자재료 및 소자",
+          "credits": 3
+        },
+        {
+          "code": "PSE4215",
+          "name": "고분자 전자재료",
+          "credits": 3
+        },
+        {
+          "code": "PSE4220",
+          "name": "바이오고분자",
+          "credits": 3
+        },
+        {
+          "code": "PSE4070",
+          "name": "나노공학",
+          "credits": 3
+        },
+        {
+          "code": "PSE4160",
+          "name": "반도체공정과 소재",
+          "credits": 3
+        },
+        {
+          "code": "PSE4200",
+          "name": "고분자에너지소재",
+          "credits": 3
+        },
+        {
+          "code": "PSE4230",
+          "name": "환경과 고분자",
+          "credits": 3
+        },
+        {
+          "code": "PSE9600",
+          "name": "현장실습 6",
+          "credits": 6
+        }
+      ]
+    },
+    "계열교양": {
+      "type": "fixed",
+      "courses": [
+        {
+          "code": "MTH1001",
+          "name": "일반수학1",
+          "credits": 3
+        },
+        {
+          "code": "MTH1002",
+          "name": "일반수학2",
+          "credits": 3
+        },
+        {
+          "code": "ACE2101",
+          "name": "공업수학1",
+          "credits": 3
+        },
+        {
+          "code": "ACE2102",
+          "name": "공업수학2",
+          "credits": 3
+        },
+        {
+          "code": "PHY1001",
+          "name": "물리학1",
+          "credits": 3
+        },
+        {
+          "code": "PHY1002",
+          "name": "물리학2",
+          "credits": 3
+        },
+        {
+          "code": "CHM1021",
+          "name": "화학1",
+          "credits": 3
+        },
+        {
+          "code": "CHM1022",
+          "name": "화학2",
+          "credits": 3
+        },
+        {
+          "code": "CHM1028",
+          "name": "화학실험1",
+          "credits": 1
+        },
+        {
+          "code": "CHM1029",
+          "name": "화학실험2",
+          "credits": 1
+        }
+      ]
+    },
+    "기초교양": {
+      "type": "fixed",
+      "courses": [
+        {
+          "code": "GEB1112",
+          "name": "크로스오버 1: 인간의 탐색",
+          "credits": 2
+        },
+        {
+          "code": "GEB1114",
+          "name": "크로스오버 3: 사회의 탐색",
+          "credits": 2
+        },
+        {
+          "code": "GEB1126",
+          "name": "문제해결을 위한 글쓰기",
+          "credits": 3
+        },
+        {
+          "code": "GEB1142",
+          "name": "미래사회와 소프트웨어-이공계열",
+          "credits": 3
+        },
+        {
+          "code": "GEB1116",
+          "name": "프로네시스 세미나",
+          "credits": 2
+        },
+        {
+          "code": "GEB1151",
+          "name": "커리어디자인 2",
+          "credits": 1
+        }
+      ]
+    }
+  },
+  "englishCertification": {
+    "required": true,
+    "description": "졸업요건과 별개로 '영어졸업인증'을 재학 중 1회 이상 학과 사무실에 제출해야 함(기준 이상 영어성적표, 제출 시 유효기간 2개월 이상 남아있어야 함). 성적증명서만으로는 확인 불가능하므로 이 앱은 체크 여부를 안내만 하고 자동 판정하지 않음.",
+    "reference": "https://www.inha.ac.kr/kr/1051/subview.do"
+  }
+}
