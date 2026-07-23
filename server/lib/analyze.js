@@ -50,10 +50,13 @@ export function analyze({ curriculum, courses, retakeThreshold, convergenceMajor
       retakeRecommended.push({ name: displayName, year: c.year, semester: c.semester, grade, matchedBucket: match?.bucket ?? null });
     }
 
-    const wantsConvergence = !!convergenceMatch && overrideSet.has(normalizeName(c.name));
+    // 학칙상 "주전공의 전공필수 종별변경 불가" — 전공필수/계열교양/기초교양처럼 고정된 항목은
+    // 다른 전공으로 옮길 수 없고, 전공선택(택할 수 있는 학점)끼리 겹칠 때만 재배정을 허용한다.
+    const movable = !!match && !!convergenceMatch && match.bucket === "전공선택";
+    const wantsConvergence = movable && overrideSet.has(normalizeName(c.name));
 
     if (match && convergenceMatch) {
-      dualEligible.push({ name: displayName, credits, grade, countedToward: wantsConvergence ? "convergence" : "primary" });
+      dualEligible.push({ name: displayName, credits, grade, countedToward: wantsConvergence ? "convergence" : "primary", movable });
     }
 
     if (match && !wantsConvergence) {

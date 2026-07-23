@@ -48,6 +48,21 @@ function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
+// 사용자(비개발자)가 봐도 뭘 해야 할지 알 수 있도록, 내부 오류를 알려진 몇 가지 한국어
+// 안내문으로 매핑한다. 알 수 없는 오류는 원문을 서버 로그에만 남기고 화면엔 일반 안내만 보여준다.
+const KNOWN_MESSAGES = new Set(["Gemini 응답이 비어 있습니다.", "Gemini 응답을 JSON으로 해석하지 못했습니다."]);
+
+function friendlyMessage(err) {
+  if (isTransientError(err)) {
+    return "지금 사용하는 사람이 몰려서 서버가 혼잡합니다. 잠시 기다렸다가 다시 시도해주세요.";
+  }
+  if (err?.message && KNOWN_MESSAGES.has(err.message)) {
+    return "성적표를 인식하지 못했습니다. PDF 화질 문제일 수 있으니 다시 시도하거나, 'OCR 없이 직접 입력하기'를 이용해주세요.";
+  }
+  console.error("[gemini] 처리되지 않은 오류:", err);
+  return "성적표 인식 중 문제가 발생했습니다. 잠시 후 다시 시도해주세요.";
+}
+
 export async function extractTranscript(imageBuffer, mimeType) {
   const ai = getClient();
   const maxAttempts = 3;
@@ -87,8 +102,6 @@ export async function extractTranscript(imageBuffer, mimeType) {
     }
   }
 
-  if (isTransientError(lastErr)) {
-    throw new Error("Gemini 서버가 지금 혼잡합니다. 잠시 후 다시 시도해주세요.");
-  }
-  throw lastErr;
+  if (lastErr?.message?.includes("GEMINI_API_KEY")) throw lastErr; // 관리자용 설정 오류, 그대로 노출
+  throw new Error(friendlyMessage(lastErr));
 }

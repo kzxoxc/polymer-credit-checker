@@ -100,7 +100,15 @@ export default function UploadStep({
 
       {previewUrl && <embed src={previewUrl} type="application/pdf" className="preview" />}
 
-      {error && <p className="error">{error}</p>}
+      {error && (
+        <div className="error">
+          <p>{error}</p>
+          <p className="hint">
+            아래 "PDF에서 과목 자동 추출" 버튼을 다시 누르면 재시도됩니다. 계속 안 되면 "OCR 없이 직접
+            입력하기"로 표를 직접 입력해도 됩니다.
+          </p>
+        </div>
+      )}
 
       <div className="actions">
         <button disabled={!file || loading} onClick={handleOcr}>

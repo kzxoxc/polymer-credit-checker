@@ -235,9 +235,13 @@ export default function ResultDashboard({
                   <li key={d.name}>
                     {d.name} ({d.credits}학점, {d.grade}) — 현재{" "}
                     <b>{d.countedToward === "convergence" ? report.convergence.name : "주전공 전공선택"}</b>으로 계산됨{" "}
-                    <button className="secondary" onClick={() => onToggleConvergenceOverride(d.name)}>
-                      {d.countedToward === "convergence" ? "주전공으로 옮기기" : "융합전공으로 옮기기"}
-                    </button>
+                    {d.movable ? (
+                      <button className="secondary" onClick={() => onToggleConvergenceOverride(d.name)}>
+                        {d.countedToward === "convergence" ? "주전공으로 옮기기" : "융합전공으로 옮기기"}
+                      </button>
+                    ) : (
+                      <span className="hint">(주전공 필수/고정 과목이라 옮길 수 없음)</span>
+                    )}
                   </li>
                 ))}
               </ul>

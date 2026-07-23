@@ -104,6 +104,43 @@ const semiconductor = getConvergenceMajor("semiconductor");
   );
 }
 
+// 6a. 전공필수처럼 고정된 항목은 겹쳐도 재배정 불가 (학칙: "주전공의 전공필수 종별변경 불가")
+{
+  // 실제 데이터엔 아직 전공필수와 겹치는 융합전공 과목이 없어서, 가상의 융합전공으로 검증한다.
+  const fakeMajor = {
+    id: "fake",
+    name: "가상융합전공",
+    doubleMajorTotalCredits: 39,
+    minorTotalCredits: 21,
+    requiredFixed: [],
+    jobTrainingPool: { minCredits: 0, courses: [] },
+    elective: { courses: [{ code: "FAKE1", name: "고분자물성", credits: 3 }] }, // 주전공 전공필수와 이름이 겹침
+  };
+  const withoutOverride = analyze({
+    curriculum: curriculum2022,
+    courses: [{ name: "고분자물성", credits: 3, grade: "A0", categoryCode: "05" }],
+    convergenceMajor: { major: fakeMajor, membership: "double" },
+  });
+  const withOverride = analyze({
+    curriculum: curriculum2022,
+    courses: [{ name: "고분자물성", credits: 3, grade: "A0", categoryCode: "05" }],
+    convergenceMajor: { major: fakeMajor, membership: "double" },
+    convergenceOverrides: ["고분자물성"], // 옮기려고 시도해도 무시돼야 함
+  });
+  assert(
+    withoutOverride.convergence.dualEligible[0]?.movable === false,
+    "전공필수와 겹치는 과목은 movable:false로 표시"
+  );
+  assert(
+    withOverride.major.required.items.find((i) => i.name === "고분자물성")?.status === "이수",
+    "override를 시도해도 전공필수 종별은 그대로 주전공에 남음"
+  );
+  assert(
+    withOverride.convergence.elective.creditsEarned === 0,
+    "override를 시도해도 융합전공 쪽으로 옮겨지지 않음"
+  );
+}
+
 // 6. 융합전공 재배정(dualEligible override): 주전공 <-> 융합전공 학점 이동
 {
   const courses = [{ name: "재료과학", credits: 3, grade: "A0", categoryCode: "06" }];
@@ -120,6 +157,7 @@ const semiconductor = getConvergenceMajor("semiconductor");
   });
   assert(withoutOverride.major.elective.creditsEarned === 3 && withoutOverride.convergence.elective.creditsEarned === 0, "재배정 전: 주전공에 귀속");
   assert(withOverride.major.elective.creditsEarned === 0 && withOverride.convergence.elective.creditsEarned === 3, "재배정 후: 융합전공으로 이동");
+  assert(withoutOverride.convergence.dualEligible[0]?.movable === true, "전공선택끼리 겹치는 과목은 movable:true로 표시");
 }
 
 // 7. 복수전공/부전공에 따른 주전공 최소학점 전환 (39 / 44 / 65)
