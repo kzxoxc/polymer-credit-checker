@@ -20,6 +20,15 @@ app.use("/api", (err, req, res, next) => {
   res.status(400).json({ error: err.message || "요청 처리 중 오류가 발생했습니다." });
 });
 
+// 기존 프론트엔드 -> 새 프론트엔드(Lovable)로 이동. /api 경로는 그대로 유지
+const NEW_FRONTEND_URL = "https://polymer-credit-checker.lovable.app/";
+app.use((req, res, next) => {
+  if (req.method === "GET" && !req.path.startsWith("/api")) {
+    return res.redirect(302, NEW_FRONTEND_URL);
+  }
+  next();
+});
+
 // 프로덕션 빌드(client/dist)가 있으면 정적으로 서빙
 const clientDist = path.resolve(__dirname, "..", "client", "dist");
 app.use(express.static(clientDist));
